@@ -2,12 +2,13 @@ from django.contrib.auth.views import LogoutView
 from django.urls import path
 
 from .views import (CustomLoginView, TaskCreate, TaskDelete, TaskDetail,
-                    TaskList, TaskUpdate)
+                    TaskList, TaskUpdate, UserRegister)
 
 urlpatterns = [
     # login e logout
     path("login/", CustomLoginView.as_view(), name="login"),
     path("logout/", LogoutView.as_view(next_page="login"), name="logout"),
+    path("register/", UserRegister.as_view(), name="register"),
 
     # crud tasks
     path("", TaskList.as_view(), name="tasks"),
